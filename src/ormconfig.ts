@@ -6,7 +6,7 @@ export const config: DataSourceOptions = {
   port: 3306,
   username: 'root',
   password: 'treinaweb',
-  database: 'crud',
+  database: 'jwt-app',
   synchronize: true,
   entities: [__dirname + '/**/entities/*.entity{.ts,.js}'],
 };
