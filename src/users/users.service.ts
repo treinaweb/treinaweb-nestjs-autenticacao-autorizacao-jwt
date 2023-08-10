@@ -30,4 +30,8 @@ export class UsersService {
   remove(id: number) {
     return this.userRepository.delete(id);
   }
+
+  findOneByEmail(username: string) {
+    return this.userRepository.findOneBy({ email: username });
+  }
 }
