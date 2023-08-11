@@ -10,4 +10,9 @@ export class AuthController {
   async login(@Body() userDto: CreateUserDto) {
     return this.authService.validarUsuario(userDto.email, userDto.password);
   }
+
+  @Post('refresh')
+  async reautenticar(@Body() body) {
+    return this.authService.reautenticar(body);
+  }
 }
