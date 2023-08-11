@@ -12,6 +12,9 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Roles } from 'src/auth/decorators/roles.decorator';
+import { TipoUsuario } from './enum/tipo-usuario.enum';
 
 @Controller('users')
 export class UsersController {
@@ -23,7 +26,8 @@ export class UsersController {
   }
 
   @Get()
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Roles(TipoUsuario.ADMIN, TipoUsuario.PADRAO)
   findAll() {
     return this.usersService.findAll();
   }
